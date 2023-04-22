@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: Web2023_BE.Web/dockerfile # the Dockerfile is stored in the API project
+    ports:
+      - 5000:80 # port mapping
+    
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development # debug runs in development mode
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+      - ~/.aspnet/https:/https:ro
